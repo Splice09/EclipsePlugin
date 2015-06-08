@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
-<plugin>
 
+<!-- plugin information -->
+<plugin>
+<!-- action set to denote visibility and set the icon graphic -->   
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet
@@ -19,7 +21,7 @@
                label="&amp;Sample Action"
                icon="icons/pluginIcon.png"
                class="org.eclipse.commitplugin.actions.SampleAction"
-               tooltip="Hello, Eclipse world"
+               tooltip="Git commit generator"
                menubarPath="sampleMenu/sampleGroup"
                toolbarPath="sampleGroup"
                id="org.eclipse.commitplugin.actions.SampleAction">
