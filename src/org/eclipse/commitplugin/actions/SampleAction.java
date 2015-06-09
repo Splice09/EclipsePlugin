@@ -52,39 +52,55 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 		FormLayout layout = new FormLayout();
         shell.setLayout(layout);
         
-        //create new buttons with cancel and ok labels
-        Button okBtn = new Button(shell, SWT.PUSH);
-        okBtn.setText("OK");
-        Button quitBtn = new Button(shell, SWT.PUSH);
-        quitBtn.setText("Cancel");
+        //create new buttons with green, red, and refactor labels
+        Button greenBtn = new Button(shell, SWT.PUSH);
+        greenBtn.setText("Green Light");
+        Button redBtn = new Button(shell, SWT.PUSH);
+        redBtn.setText("Red Light");
         
-        //positon the two buttons
-        FormData okData = new FormData(80, 30);
-        okData.right = new FormAttachment(98);
-        okData.bottom = new FormAttachment(95);
-        okBtn.setLayoutData(okData);
+        Button refBtn = new Button(shell, SWT.PUSH);
+        refBtn.setText("Refactor");
+        
+        //positon the three buttons
+        FormData refData = new FormData(80, 30);
+        refData.right = new FormAttachment(98);
+        refData.bottom = new FormAttachment(95);
+        refBtn.setLayoutData(refData);
+        
+        FormData redData = new FormData(80, 30);
+        redData.right = new FormAttachment(98);
+        redData.bottom = new FormAttachment(refBtn, -35, SWT.BOTTOM);
+        redBtn.setLayoutData(redData);
+        
+        FormData greenData = new FormData(80, 30);
+        greenData.right = new FormAttachment(98);
+        greenData.bottom = new FormAttachment(refBtn, -70, SWT.BOTTOM);
+        greenBtn.setLayoutData(greenData);
 
-        FormData cancelData = new FormData(80, 30);
-        cancelData.right = new FormAttachment(okBtn, -5, SWT.LEFT);
-        cancelData.bottom = new FormAttachment(okBtn, 0, SWT.BOTTOM);
-        quitBtn.setLayoutData(cancelData);
-        
         //create listener for button presses
-        okBtn.addSelectionListener(new SelectionAdapter() {
+        greenBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 shell.setVisible(false);
             }
         });
-        quitBtn.addSelectionListener(new SelectionAdapter() {
+        redBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 shell.setVisible(false);
             }
         });
+        /*
+        refBtn.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                shell.setVisible(false);
+            }
+        });
+        */
         //set shell title, and size
         shell.setText("Git Commit Plugin");
-        shell.setSize(350, 200);
+        shell.setSize(500, 350);
         centerWindow(shell);
         //open shell
         shell.open();
