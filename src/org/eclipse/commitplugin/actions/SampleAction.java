@@ -27,8 +27,9 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	private IWorkbenchWindow window;
 	
 	private String commitType;
-	private String commitMessage;
+	private String commitMessageString;
 	private boolean defaultButton = false;
+	private Text commitMessage;
 	/**
 	 * The constructor.
 	 */
@@ -48,16 +49,17 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 		//create shell object
 		Shell shell = new Shell(window.getShell());
 		
-		//create layout object and set shell layout
+		
+        //create layout object and set shell layout
 		FormLayout layout = new FormLayout();
         shell.setLayout(layout);
         
+       
         //create new buttons with green, red, and refactor labels
         Button greenBtn = new Button(shell, SWT.PUSH);
         greenBtn.setText("Green Light");
         Button redBtn = new Button(shell, SWT.PUSH);
         redBtn.setText("Red Light");
-        
         Button refBtn = new Button(shell, SWT.PUSH);
         refBtn.setText("Refactor");
         
@@ -76,7 +78,17 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
         greenData.right = new FormAttachment(98);
         greenData.bottom = new FormAttachment(refBtn, -70, SWT.BOTTOM);
         greenBtn.setLayoutData(greenData);
-
+        
+      //create text box
+        commitMessage = new Text(shell, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+        FormData textData = new FormData();
+        textData.width = 310;
+        textData.height = 150;
+        textData.top = new FormAttachment(5);
+        textData.left = new FormAttachment(2);
+        
+        commitMessage.setLayoutData(textData);
+        
         //create listener for button presses
         greenBtn.addSelectionListener(new SelectionAdapter() {
             @Override
@@ -90,17 +102,18 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
                 shell.setVisible(false);
             }
         });
-        /*
         refBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
                 shell.setVisible(false);
             }
         });
-        */
-        //set shell title, and size
+
+        
+        
+      //set shell title, and size
         shell.setText("Git Commit Plugin");
-        shell.setSize(500, 350);
+        shell.setSize(450, 200);
         centerWindow(shell);
         //open shell
         shell.open();
