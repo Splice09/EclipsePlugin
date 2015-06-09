@@ -1,10 +1,17 @@
 package org.eclipse.commitplugin.actions;
 
+import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.swt.widgets.*;
+import org.eclipse.swt.layout.*;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 /**
  * Our sample action implements workbench action delegate.
@@ -14,13 +21,19 @@ import org.eclipse.jface.dialogs.MessageDialog;
  * delegated to it.
  * @see IWorkbenchWindowActionDelegate
  */
-public class SampleAction implements IWorkbenchWindowActionDelegate {
+public class SampleAction implements IWorkbenchWindowActionDelegate{
 	private IWorkbenchWindow window;
+	
+	private String commitType;
+	private String commitMessage;
+	private boolean defaultButton = false;
 	/**
 	 * The constructor.
 	 */
 	public SampleAction() {
+		
 	}
+	
 
 	/**
 	 * The action has been activated. The argument of the
@@ -28,12 +41,35 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 * in the workbench UI.
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
+
 	public void run(IAction action) {
-		MessageDialog.openInformation(
-			window.getShell(),
-			"Commitplugin",
-			"Hello, Eclipse world");
+		//create shell object
+		Shell shell = new Shell(window.getShell());
+		//create layout object
+		RowLayout layout = new RowLayout();
+		//set layout margins
+        layout.marginLeft = 50;
+        layout.marginTop = 50;
+        shell.setLayout(layout);
+        //create new button with cancel label
+        Button quitBtn = new Button(shell, SWT.PUSH);
+        quitBtn.setText("Cancel");
+        quitBtn.setLayoutData(new RowData(80, 30));
+        //create listener for button press
+        quitBtn.addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                shell.setVisible(false);
+            }
+        });
+        //set shell title, and size
+        shell.setText("Git Commit Plugin");
+        shell.setSize(250, 200);
+        //open shell
+        shell.open();
+
 	}
+
 
 	/**
 	 * Selection in the workbench has been changed. We 
