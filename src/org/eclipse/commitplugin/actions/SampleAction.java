@@ -48,14 +48,28 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	public void run(IAction action) {
 		//create shell object
 		Shell shell = new Shell(window.getShell());
-		
-		
+
         //create layout object and set shell layout
 		FormLayout layout = new FormLayout();
         shell.setLayout(layout);
         
-       
-        //create new buttons with green, red, and refactor labels
+        //draw UI
+        drawUI(shell);
+ 
+        //set shell title, and size
+        shell.setText("Git Commit Plugin");
+        shell.setSize(450, 200);
+        centerWindow(shell);
+        //open shell
+        shell.open();
+
+	}
+
+	/*
+	 * This void function draws the UI of the shell
+	 */
+	public void drawUI(Shell shell){
+		//create new buttons with green, red, and refactor labels
         Button greenBtn = new Button(shell, SWT.PUSH);
         greenBtn.setText("Green Light");
         Button redBtn = new Button(shell, SWT.PUSH);
@@ -108,19 +122,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
                 shell.setVisible(false);
             }
         });
-
-        
-        
-      //set shell title, and size
-        shell.setText("Git Commit Plugin");
-        shell.setSize(450, 200);
-        centerWindow(shell);
-        //open shell
-        shell.open();
-
 	}
-
-
 	/**
 	 * Selection in the workbench has been changed. We 
 	 * can change the state of the 'real' action here
