@@ -28,7 +28,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	
 	private String commitType;
 	private String commitMessageString;
-	private boolean defaultButton = false;
 	private Text commitMessage;
 	/**
 	 * The constructor.
