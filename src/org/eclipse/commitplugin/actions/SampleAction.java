@@ -100,7 +100,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
         textData.height = 150;
         textData.top = new FormAttachment(5);
         textData.left = new FormAttachment(2);
-        
+        commitMessage.setToolTipText("Add additional commit comments here");
         commitMessage.setLayoutData(textData);
         
         //create listener for button presses
