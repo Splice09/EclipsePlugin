@@ -28,6 +28,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	
 	private String commitType;
 	private String commitMessageString;
+	private String finalCommitMessage;
 	private Text commitMessage;
 	/**
 	 * The constructor.
@@ -106,21 +107,41 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
         greenBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                shell.setVisible(false);
+            	makeString(commitMessage, 1);
+            	shell.setVisible(false);
             }
         });
         redBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                shell.setVisible(false);
+            	makeString(commitMessage, 2);
+            	shell.setVisible(false);
             }
         });
         refBtn.addSelectionListener(new SelectionAdapter() {
             @Override
             public void widgetSelected(SelectionEvent e) {
-                shell.setVisible(false);
+            	makeString(commitMessage, 3);
+            	shell.setVisible(false);
             }
         });
+	}
+	
+	/*
+	 * This method concatenates the text with the button selection
+	 */
+	public void makeString(Text commit,int option){
+		commitMessageString = commit.getText().toString();
+		switch(option){
+			case 1: commitType = "Green Light | ";
+					break;
+			case 2: commitType = "Red Light | ";
+					break;
+			case 3: commitType = "Refactor | ";
+					break;
+		}
+		finalCommitMessage = commitType + commitMessageString;
+		System.out.println(finalCommitMessage);
 	}
 	/**
 	 * Selection in the workbench has been changed. We 
