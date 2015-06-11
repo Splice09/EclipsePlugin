@@ -1,5 +1,7 @@
 package org.eclipse.commitplugin.actions;
 
+import java.io.File;
+import java.io.IOException;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
@@ -14,6 +16,11 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.jgit.api.*;
+import org.eclipse.jgit.api.errors.*;
+import org.eclipse.jgit.api.CreateBranchCommand.SetupUpstreamMode;
+import org.eclipse.jgit.internal.storage.file.FileRepository;
+import org.eclipse.jgit.lib.Repository;
 
 /**
  * Our sample action implements workbench action delegate.
@@ -142,6 +149,13 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 		}
 		finalCommitMessage = commitType + commitMessageString;
 		System.out.println(finalCommitMessage);
+	}
+	
+	/*
+	 * This method handles the git commands.
+	 */
+	public void makeCommit(String commitMessage){
+		//place commit operations here!
 	}
 	/**
 	 * Selection in the workbench has been changed. We 
