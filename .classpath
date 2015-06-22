@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_45"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="resources/org.eclipse.jgit-3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.core.resources.win32.x86_64_3.5.0.v20140124-1940.jar"/>
+	<classpathentry kind="lib" path="/External Plug-in Libraries"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/ch.qos.logback.slf4j_1.0.7.v20121108-1250.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.m2e.maven.runtime.slf4j.simple_1.5.1.20150109-1819/jars/slf4j-simple-1.7.5.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jsch.core_1.1.500.v20131112-1442.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jsch.ui_1.1.500.v20131112-1442.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/com.jcraft.jsch_0.1.50.v201403120620.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/com.jcraft.jsch_0.1.51.v201410302000.jar"/>
+	<classpathentry kind="lib" path="resources/org.eclipse.core.resources.spysupport_1.4.0.200607141315.jar"/>
+	<classpathentry kind="lib" path="resources/org.eclipse.core.tools_1.4.0.200607141315.jar"/>
+	<classpathentry kind="lib" path="resources/org.eclipse.core.tools.resources_1.4.0.200607141315.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.archive_3.4.2.201412180340-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.archive_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.http.apache_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.java7.source_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.java7_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.pgm.source_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.pgm_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.source_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit.ui_3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit_3.4.2.201412180340-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.eclipse.jgit-3.7.1.201504261725-r.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.slf4j.impl.log4j12_1.7.2.v20131105-2200.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/plugins/org.slf4j.api_1.7.2.v20121108-1250.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

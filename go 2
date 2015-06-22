@@ -1,0 +1,71 @@
+[33mcommit 5fa5f0332a4b6c25082fbac2f8f1ede18ffa3c8f[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Sun Jun 21 13:52:24 2015 -0500
+
+    Green Light | Added commit functionality to plug-in
+
+[33mcommit 665726858063221d3e4fc37d7ebaf9bc54c7fc51[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Wed Jun 10 23:28:43 2015 -0500
+
+    fix buildpath to allow jgit imports
+
+[33mcommit c76418c4bd48eef735a61923c6f1bd8a2a630724[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Wed Jun 10 02:24:52 2015 -0500
+
+    added tool tip for the text box
+
+[33mcommit 398ae9d742600fea756eebe20bc8474a3c4d09b7[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Wed Jun 10 02:06:51 2015 -0500
+
+    Added Text to String conversion and concatenated commit type with commit message
+
+[33mcommit bb000f8f5e5d231c45a0fab39d6db112f85a5588[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Tue Jun 9 23:14:29 2015 -0500
+
+    this is a test commit
+
+[33mcommit fd8d08db55355b6212edc8fe260ffa6d82991310[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Tue Jun 9 18:28:46 2015 -0500
+
+    draw the UI in its own function for readability and modularity
+
+[33mcommit 769b15e2a5e5fcc2dfded0c521b218172eff0369[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Tue Jun 9 18:09:47 2015 -0500
+
+    added text box
+
+[33mcommit 0e360e9b6b9c32f86fdc08b0f554c5082ce9b0ca[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Tue Jun 9 17:23:35 2015 -0500
+
+    adjusted placement of the three buttons
+
+[33mcommit e49e11dcd2fc99e0eea01e413a2ebd55673c49be[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Mon Jun 8 20:58:38 2015 -0500
+
+    Add ok and cancel button and center plugin window popup
+
+[33mcommit 238678356e0a8fc92d6d1ebb37a11c1669ad7d36[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Mon Jun 8 20:19:11 2015 -0500
+
+    Changed title and began working on SWT styling
+
+[33mcommit ea68541518a3da58da42aba1db41086a86f286c0[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Mon Jun 8 18:17:15 2015 -0500
+
+    Changed some XML information
+
+[33mcommit 9cf7bf21cff4283d9be8d47e4f60f8c6b02e2051[m
+Author: Splice09 <jpf0005@gmail.com>
+Date:   Mon Jun 8 18:00:08 2015 -0500
+
+    first commit
