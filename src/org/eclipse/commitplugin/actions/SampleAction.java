@@ -150,7 +150,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 					break;
 		}
 		finalCommitMessage = commitType + commitMessageString;
-		System.out.println(finalCommitMessage);
+		//System.out.println(finalCommitMessage);
 		makeCommit(finalCommitMessage);
 	}
 	
@@ -158,22 +158,21 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method handles the git commands.
 	 */
 	public void makeCommit(String commitMessage){
-		//File currentDirFile = new File(".");
-		//String helper = currentDirFile.getAbsolutePath();
+		//get the current working directory of the user
 		String workingDir = System.getProperty("user.dir");
 		try {
-			//String currentDir = helper.substring(0, helper.length() - currentDirFile.getCanonicalPath().length());
+			//Create the repository
 			FileRepositoryBuilder builder = new FileRepositoryBuilder();
 			Repository localRepo = builder.setGitDir(new File(workingDir + "/.git"))
 					.readEnvironment() // scan environment GIT_* variables
 					.findGitDir() // scan up the file system tree
 					.build();
 	        Git git = new Git(localRepo);
+	        //Add all relevant files to the Git repository
 	        git.add().addFilepattern(".").call();
-	        //AddCommand add = git.add();
-	        //add.addFilepattern(workingDir).call();
+	        //Make Commit with included message
 	        git.commit().setMessage(commitMessage).call();
-			System.out.println(workingDir);
+			//System.out.println(workingDir);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
