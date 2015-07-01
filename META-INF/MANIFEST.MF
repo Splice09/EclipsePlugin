@@ -11,7 +11,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jgit.http.apache;bundle-version="3.7.1",
  org.eclipse.jgit.pgm;bundle-version="3.7.1",
  org.eclipse.jgit.ui;bundle-version="3.7.1",
- org.eclipse.m2e.maven.runtime.slf4j.simple;bundle-version="1.5.1",
  org.slf4j.api;bundle-version="1.7.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
