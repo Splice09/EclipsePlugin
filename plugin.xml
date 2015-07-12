@@ -12,14 +12,14 @@
             visible="true"
             id="org.eclipse.commitplugin.actionSet">
          <menu
-               label="Sample &amp;Menu"
+               label="Commit &amp;Plug-in"
                id="sampleMenu">
             <separator
                   name="sampleGroup">
             </separator>
          </menu>
          <action
-               label="&amp;Sample Action"
+               label="&amp;SampleAction"
                icon="icons/pluginIcon.png"
                class="org.eclipse.commitplugin.actions.SampleAction"
                tooltip="Git commit generator"
