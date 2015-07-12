@@ -6,22 +6,20 @@ import org.python.pydev.debug.pyunit.IPyUnitServer;
 import org.python.pydev.debug.pyunit.IPyUnitServerListener;
 import org.python.pydev.debug.ui.launching.PythonRunner;
 import org.python.pydev.shared_core.callbacks.ICallbackListener;
+import org.eclipse.ui.IStartup;
 
-
-public class MyListener {
+public class MyListener implements IStartup {
 	public MyListener(){
 		PythonRunner.onPyUnitServerCreated
 		.registerListener(new ICallbackListener<IPyUnitServer>() {
 			
 			@Override
 			public Object call(IPyUnitServer obj) {
-				System.out.println("Server has been created.");
 				obj.registerOnNotifyTest(new IPyUnitServerListener() {
 					
 					@Override
 					public void notifyTestsCollected(
 							String totalTestsCount) {
-						System.out.println("Tests are collected.");
 					}
 
 					@Override
@@ -33,16 +31,8 @@ public class MyListener {
 			
 					@Override
 					public void notifyStartTest(String location, String test) {
-						
-						//testStarted = true;
-						System.out.println("We have started a pyunit test!");
-						
-						long mainThreadId = Thread.currentThread().getId();
-						System.out.println(mainThreadId);
 						Display.getDefault().asyncExec(new Runnable() {
 					        public void run() {
-					        	long mainThreadId = Thread.currentThread().getId();
-								System.out.println(mainThreadId);
 					        	SampleAction action = new SampleAction();
 								action.initialize();
 					        }
@@ -61,5 +51,11 @@ public class MyListener {
 				return null;
 			}
 		});
+	}
+
+	@Override
+	public void earlyStartup() {
+		// TODO Auto-generated method stub
+		
 	}
 }

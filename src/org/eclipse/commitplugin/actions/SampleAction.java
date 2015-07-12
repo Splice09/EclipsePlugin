@@ -1,42 +1,20 @@
 package org.eclipse.commitplugin.actions;
 
 import java.io.File;
-/*
-import java.io.IOException;
-import javax.inject.Inject;*/
-
-
-//import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
-/*
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
-*/
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.SWT;
-//import org.eclipse.swt.SWTException;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-//import org.eclipse.jgit.api.AddCommand;
 import org.eclipse.jgit.api.Git;
-//import org.eclipse.jgit.internal.storage.file.FileRepository;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-/*import org.python.pydev.debug.pyunit.IPyUnitLaunch;
-import org.python.pydev.debug.pyunit.IPyUnitServer;
-import org.python.pydev.debug.pyunit.PyUnitTestRun;
-import org.python.pydev.debug.pyunit.PyUnitTestStarted;
-import org.python.pydev.debug.pyunit.IPyUnitServerListener;
-import org.python.pydev.debug.ui.launching.PythonRunner;
-import org.python.pydev.shared_core.callbacks.ICallbackListener;
-import org.eclipse.core.runtime.jobs.Job;
-*/
 
 
 
@@ -49,8 +27,8 @@ import org.eclipse.core.runtime.jobs.Job;
  * @see IWorkbenchWindowActionDelegate
  */
 public class SampleAction implements IWorkbenchWindowActionDelegate{
-	private IWorkbenchWindow window;
 	
+	private IWorkbenchWindow window;
 	private String commitType;
 	private String commitMessageString;
 	private String finalCommitMessage;
@@ -68,11 +46,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	public SampleAction() {
 		display = Display.getDefault();
 		shell = new Shell(display);
-		long mainThreadId = Thread.currentThread().getId();
-		System.out.println(mainThreadId);
-		System.out.println("We got a ping from the listener.");
-		// initialize();
-		
 	}
 	
 	/**
@@ -87,12 +60,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	}
 	
 	public void initialize(){
-		System.out.println("You are inside of initialize!");
-		long mainThreadId = Thread.currentThread().getId();
-		System.out.println("The current thread is: " + mainThreadId);
 		//create shell object
-		//display = Display.getDefault();
-		//Shell shell = new Shell(display);
 		if(shell.isVisible() == false){
 			//create layout object and set shell layout
 			FormLayout layout = new FormLayout();
@@ -190,7 +158,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 					break;
 		}
 		finalCommitMessage = commitType + commitMessageString;
-		//System.out.println(finalCommitMessage);
 		makeCommit(finalCommitMessage);
 	}
 	
@@ -212,8 +179,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	        git.add().addFilepattern(".").call();
 	        //Make Commit with included message
 	        git.commit().setMessage(commitMessage).call();
-			//System.out.println(workingDir);
-	       //testStarted = false;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
