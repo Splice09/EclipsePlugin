@@ -3,6 +3,7 @@
 
 <!-- plugin information -->	
 <plugin>
+   <extension-point id="IPyUnitServerListener" name="IPyUnitServerListener" schema="schema/IPyUnitServerListener.exsd"/>
 <!-- action set to denote visibility and set the icon graphic -->   
    <extension
          point="org.eclipse.ui.actionSets">
@@ -27,6 +28,12 @@
                id="org.eclipse.commitplugin.actions.SampleAction">
          </action>
       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.eclipse.commitplugin.actions.MyListener">
+      </startup>
    </extension>
 
 </plugin>

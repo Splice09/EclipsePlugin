@@ -15,5 +15,8 @@
 	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.slf4j.api_1.7.2.v20121108-1250.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.slf4j.impl.log4j12_1.7.2.v20131105-2200.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/com.python.pydev_4.2.0.201507041133/pydev.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.python.pydev.debug_4.2.0.201507041133/pydev-debug.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.python.pydev_4.2.0.201507041133/pydev.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
