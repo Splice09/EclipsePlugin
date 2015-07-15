@@ -1,6 +1,6 @@
 package org.eclipse.commitplugin.actions;
 
-import org.eclipse.swt.SWTException;
+
 import org.eclipse.swt.widgets.Display;
 import org.python.pydev.debug.pyunit.IPyUnitServer;
 import org.python.pydev.debug.pyunit.IPyUnitServerListener;
@@ -9,7 +9,13 @@ import org.python.pydev.shared_core.callbacks.ICallbackListener;
 import org.eclipse.ui.IStartup;
 
 public class MyListener implements IStartup {
+	
 	public MyListener(){
+		
+	}
+
+	@Override
+	public void earlyStartup() {
 		PythonRunner.onPyUnitServerCreated
 		.registerListener(new ICallbackListener<IPyUnitServer>() {
 			
@@ -51,11 +57,6 @@ public class MyListener implements IStartup {
 				return null;
 			}
 		});
-	}
-
-	@Override
-	public void earlyStartup() {
-		// TODO Auto-generated method stub
 		
 	}
 }

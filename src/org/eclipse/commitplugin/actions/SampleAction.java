@@ -28,16 +28,14 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
  */
 public class SampleAction implements IWorkbenchWindowActionDelegate{
 	
-	private IWorkbenchWindow window;
+	
 	private String commitType;
 	private String commitMessageString;
 	private String finalCommitMessage;
 	private Text commitMessage;
-	private boolean previouslyOpened = false;
-	private boolean testStarted = false;
-	private volatile int testCount = 0;
+	
 	private Display display;
-	private Shell shell;
+	private final Shell shell;
 	
 	
 	/**
@@ -67,7 +65,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			shell.setLayout(layout);
 		        
 			//draw UI
-			drawUI(shell);
+			drawUI();
 		 
 			//set shell title, and size
 			shell.setText("Git Commit Plugin");
@@ -82,7 +80,8 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	/*
 	 * This void function draws the UI of the shell
 	 */
-	public void drawUI(Shell shell){
+	public void drawUI(){
+		System.out.println("We are drawing the ui.");
 		//create new buttons with green, red, and refactor labels
         Button greenBtn = new Button(shell, SWT.PUSH);
         greenBtn.setText("Green Light");
@@ -122,7 +121,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
             @Override
             public void widgetSelected(SelectionEvent e) {
             	makeString(commitMessage, 1);
-            	previouslyOpened = true;
             	shell.setVisible(false);
             }
         });
@@ -130,7 +128,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
             @Override
             public void widgetSelected(SelectionEvent e) {
             	makeString(commitMessage, 2);
-            	previouslyOpened = true;
             	shell.setVisible(false);
             }
         });
@@ -138,7 +135,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
             @Override
             public void widgetSelected(SelectionEvent e) {
             	makeString(commitMessage, 3);
-            	previouslyOpened = true;
             	shell.setVisible(false);
             }
         });
@@ -148,6 +144,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method concatenates the text with the button selection
 	 */
 	public void makeString(Text commit,int option){
+		System.out.println("we are making the string.");
 		commitMessageString = commit.getText().toString();
 		switch(option){
 			case 1: commitType = "Green Light | ";
@@ -165,8 +162,10 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method handles the git commands.
 	 */
 	public void makeCommit(String commitMessage){
+		System.out.println("We are making the commit.");
 		//get the current working directory of the user
 		String workingDir = System.getProperty("user.dir");
+		System.out.println("The user dir is:" + workingDir);
 		try {
 			//Create the repository
 			FileRepositoryBuilder builder = new FileRepositoryBuilder();
@@ -202,14 +201,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	public void dispose() {
 	}
 
-	/**
-	 * We will cache window object in order to
-	 * be able to provide parent shell for the message dialog.
-	 * @see IWorkbenchWindowActionDelegate#init
-	 */
-	public void init(IWorkbenchWindow window) {
-		this.window = window;
-	}
+
 	
 	/*
 	 * This method centers the plugin window on the screen upon open.
@@ -225,4 +217,10 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 
         shell.setBounds(nLeft, nTop, p.x, p.y);
     }
+
+	@Override
+	public void init(IWorkbenchWindow window) {
+		// TODO Auto-generated method stub
+		
+	}
 }
