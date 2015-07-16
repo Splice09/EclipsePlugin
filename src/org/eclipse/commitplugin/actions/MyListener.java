@@ -34,32 +34,13 @@ public class MyListener implements IStartup {
 	private DataInputStream dis;
 	private String argument;
 	private ArrayList<Integer> myList;
+	
+	/* Constructor */
 	public MyListener(){
-		//myList = new ArrayList<Integer>(7);
-		//print();
+		
 	}
 	
-	public void print(){
-		/*try {
-			is = FileLocator.openStream(Activator.getDefault().getBundle(), new Path("arguments.txt"), false);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		re = new InputStreamReader(is);
-		br = new BufferedReader(re);
-		try {
-			while(br.readLine() != null){
-				argument = argument + br.readLine();
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//String workingDir = System.getProperty("user.dir");
-		JOptionPane.showMessageDialog(null, "The user dir is:" + argument);*/
-	}
-
+	/* This method sets up a listener that runs in the background of eclipse for PyUnit */
 	@Override
 	public void earlyStartup() {
 		JOptionPane.showMessageDialog(null, "You are running commit plugin!");
@@ -71,8 +52,13 @@ public class MyListener implements IStartup {
 				obj.registerOnNotifyTest(new IPyUnitServerListener() {
 					
 					@Override
-					public void notifyTestsCollected(
-							String totalTestsCount) {
+					public void notifyTestsCollected(String totalTestsCount) {
+						Display.getDefault().asyncExec(new Runnable() {
+					        public void run() {
+					        	SampleAction action = new SampleAction();
+								action.initialize();
+					        }
+					    });
 					}
 
 					@Override
@@ -84,12 +70,7 @@ public class MyListener implements IStartup {
 			
 					@Override
 					public void notifyStartTest(String location, String test) {
-						Display.getDefault().asyncExec(new Runnable() {
-					        public void run() {
-					        	SampleAction action = new SampleAction();
-								action.initialize();
-					        }
-					    });
+						
 						
 					}
 	
