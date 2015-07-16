@@ -56,7 +56,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 */
 	public SampleAction() {
 		display = Display.getDefault();
-		shell = new Shell(display);
+		shell = new Shell(display, SWT.APPLICATION_MODAL);
 	}
 	
 	/**
