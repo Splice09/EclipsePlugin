@@ -25,25 +25,21 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
-
-
 /**
- * Our sample action implements workbench action delegate.
- * The action proxy will be created by the workbench and
- * shown in the UI. When the user tries to use the action,
- * this delegate will be created and execution will be 
- * delegated to it.
- * @see IWorkbenchWindowActionDelegate
+ * Author: Patrick Fleming
+ * Date:   7/15/2015
+ * Email:  jpf0005@auburn.edu
  */
+
 public class SampleAction implements IWorkbenchWindowActionDelegate{
 	
 	
 	private String commitType;
 	private String commitMessageString;
 	private String finalCommitMessage;
-	private Text commitMessage;
 	private String workingDir;
 	private String gitPath;
+	private Text commitMessage;
 	
 	private FileReader fr;
 	private BufferedReader textReader;
@@ -51,8 +47,8 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	private final Shell shell;
 	
 	
-	/**
-	 * The constructor.
+	/*
+	 * Constructor.
 	 */
 	public SampleAction() {
 		display = Display.getDefault();
@@ -94,9 +90,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This void function draws the UI of the shell
 	 */
 	public void drawUI(){
-		getWorkingDir();
-		JOptionPane.showMessageDialog(null, "We are drawing the UI.");
-		//writer.println("We are drawing the ui");
 		//create new buttons with green, red, and refactor labels
         Button greenBtn = new Button(shell, SWT.PUSH);
         greenBtn.setText("Green Light");
@@ -121,7 +114,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
         greenData.bottom = new FormAttachment(refBtn, -70, SWT.BOTTOM);
         greenBtn.setLayoutData(greenData);
         
-      //create text box
+        //create text box
         commitMessage = new Text(shell, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
         FormData textData = new FormData();
         textData.width = 300;
@@ -159,7 +152,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method concatenates the text with the button selection
 	 */
 	public void makeString(Text commit,int option){
-		JOptionPane.showMessageDialog(null, "We are making the string.");
 		commitMessageString = commit.getText().toString();
 		switch(option){
 			case 1: commitType = "Green Light | ";
@@ -174,63 +166,61 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	}
 	
 	/*
-	 * This method handles the git commands.
+	 * This method handles the Git commands.
 	 */
 	public void makeCommit(String commitMessage){
-		JOptionPane.showMessageDialog(null, "We are making the commit.");
-		//writer.println("We are making the commit.");
-		//get the current working directory of the user
+		//get the current working directory of the user (set in arguments.txt)
 		workingDir = getWorkingDir();
-		JOptionPane.showMessageDialog(null, "The user dir is:" + workingDir);
-		//System.out.println("The user dir is:" + workingDir);
-		try {
-			//Create the repository
-			FileRepositoryBuilder builder = new FileRepositoryBuilder();
-			Repository localRepo = builder.setGitDir(new File(workingDir + "/.git"))
-					.readEnvironment() // scan environment GIT_* variables
-					.findGitDir() // scan up the file system tree
-					.build();
-	        Git git = new Git(localRepo);
-	        //Add all relevant files to the Git repository
-	        git.add().addFilepattern(".").call();
-	        //Make Commit with included message
-	        git.commit().setMessage(commitMessage).call();
-		} catch (Exception e) {
-			e.printStackTrace();
+		if(workingDir != ""){
+			try {
+				//Create the repository
+				FileRepositoryBuilder builder = new FileRepositoryBuilder();
+				Repository localRepo = builder.setGitDir(new File(workingDir + "/.git"))
+						.readEnvironment() // scan environment GIT_* variables
+						.findGitDir() // scan up the file system tree
+						.build();
+				Git git = new Git(localRepo);
+				//Add all relevant files to the Git repository
+				git.add().addFilepattern(".").call();
+				//Make Commit with included message
+				git.commit().setMessage(commitMessage).call();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
+		else{
+			JOptionPane.showMessageDialog(null, "Unable to make commit. Please set a path in arguments.txt");
+		}
 	}
 	
+	/* 
+	 * This function opens the arguments.txt file and retrieves the specified git root directory for commits. 
+	 */
 	public String getWorkingDir(){
 		String myDir = SampleAction.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 		try {
+			//Build file path to arguments.txt
 			String decodedPath = URLDecoder.decode(myDir, "UTF-8");
-			JOptionPane.showMessageDialog(null, "Your path is: " + decodedPath);
 			String myFileName = new File(decodedPath).getName();
-			//JOptionPane.showMessageDialog(null, "Your file name is: " + myFileName);
 			String newPath = decodedPath.substring(0, decodedPath.length() - myFileName.length());
-			//JOptionPane.showMessageDialog(null, "Your new file name is: " + newPath);
 			String finalPath = newPath + "arguments.txt";
-			JOptionPane.showMessageDialog(null, "Your arguments path is: " + finalPath);
-			
+			//Open arguments to retrieve Git Commit path
 			try {
 				fr = new FileReader(finalPath);
 			} catch (FileNotFoundException e) {
-				JOptionPane.showMessageDialog(null, "You deleted arguments.txt :(");
+				JOptionPane.showMessageDialog(null, "You deleted arguments.txt");
 				e.printStackTrace();
 			}
 			textReader = new BufferedReader(fr);
+			//Read first line of arguments
 			try {
 				gitPath = textReader.readLine();
 			} catch (IOException e) {
-				JOptionPane.showMessageDialog(null, "You must set a path in arguments.txt");
 				gitPath = "";
 				e.printStackTrace();
 			}
 			
 		} catch (UnsupportedEncodingException e) {
-			JOptionPane.showMessageDialog(null, "Yo path is jacked up.");
 			e.printStackTrace();
 		}
 		
@@ -258,7 +248,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	
 	/*
 	 * This method centers the plugin window on the screen upon open.
-	*/
+	 */
 	private void centerWindow(Shell shell){
 		
 		Rectangle bds = shell.getDisplay().getBounds();

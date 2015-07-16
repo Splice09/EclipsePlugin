@@ -1,21 +1,5 @@
 package org.eclipse.commitplugin.actions;
 
-
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.BufferedInputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-
-import org.eclipse.commitplugin.Activator;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.widgets.Display;
 import org.python.pydev.debug.pyunit.IPyUnitServer;
 import org.python.pydev.debug.pyunit.IPyUnitServerListener;
@@ -25,16 +9,14 @@ import org.eclipse.ui.IStartup;
 
 import javax.swing.JOptionPane;
 
+/**
+ * Author: Patrick Fleming
+ * Date:   7/15/2015
+ * Email:  jpf0005@auburn.edu
+ */
 
 public class MyListener implements IStartup {
-	private InputStream is;
-	private InputStreamReader re;
-	private BufferedReader br;
-	private BufferedInputStream bis;
-	private DataInputStream dis;
-	private String argument;
-	private ArrayList<Integer> myList;
-	
+
 	/* Constructor */
 	public MyListener(){
 		
@@ -43,7 +25,7 @@ public class MyListener implements IStartup {
 	/* This method sets up a listener that runs in the background of eclipse for PyUnit */
 	@Override
 	public void earlyStartup() {
-		JOptionPane.showMessageDialog(null, "You are running commit plugin!");
+		JOptionPane.showMessageDialog(null, "You are running the Software Process Git Commit Plugin!");
 		PythonRunner.onPyUnitServerCreated
 		.registerListener(new ICallbackListener<IPyUnitServer>() {
 			
