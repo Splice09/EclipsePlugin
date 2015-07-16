@@ -263,6 +263,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	@Override
 	public void init(IWorkbenchWindow window) {
 		// TODO Auto-generated method stub
+		// dummy comment
 		
 	}
 }
