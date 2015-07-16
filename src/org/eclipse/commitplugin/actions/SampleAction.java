@@ -1,6 +1,15 @@
 package org.eclipse.commitplugin.actions;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
+import javax.swing.JOptionPane;
+
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -33,7 +42,11 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	private String commitMessageString;
 	private String finalCommitMessage;
 	private Text commitMessage;
+	private String workingDir;
+	private String gitPath;
 	
+	private FileReader fr;
+	private BufferedReader textReader;
 	private Display display;
 	private final Shell shell;
 	
@@ -81,7 +94,9 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This void function draws the UI of the shell
 	 */
 	public void drawUI(){
-		System.out.println("We are drawing the ui.");
+		getWorkingDir();
+		JOptionPane.showMessageDialog(null, "We are drawing the UI.");
+		//writer.println("We are drawing the ui");
 		//create new buttons with green, red, and refactor labels
         Button greenBtn = new Button(shell, SWT.PUSH);
         greenBtn.setText("Green Light");
@@ -144,7 +159,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method concatenates the text with the button selection
 	 */
 	public void makeString(Text commit,int option){
-		System.out.println("we are making the string.");
+		JOptionPane.showMessageDialog(null, "We are making the string.");
 		commitMessageString = commit.getText().toString();
 		switch(option){
 			case 1: commitType = "Green Light | ";
@@ -162,10 +177,12 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 * This method handles the git commands.
 	 */
 	public void makeCommit(String commitMessage){
-		System.out.println("We are making the commit.");
+		JOptionPane.showMessageDialog(null, "We are making the commit.");
+		//writer.println("We are making the commit.");
 		//get the current working directory of the user
-		String workingDir = System.getProperty("user.dir");
-		System.out.println("The user dir is:" + workingDir);
+		workingDir = getWorkingDir();
+		JOptionPane.showMessageDialog(null, "The user dir is:" + workingDir);
+		//System.out.println("The user dir is:" + workingDir);
 		try {
 			//Create the repository
 			FileRepositoryBuilder builder = new FileRepositoryBuilder();
@@ -182,6 +199,42 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			e.printStackTrace();
 		}
 		
+		
+	}
+	
+	public String getWorkingDir(){
+		String myDir = SampleAction.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		try {
+			String decodedPath = URLDecoder.decode(myDir, "UTF-8");
+			JOptionPane.showMessageDialog(null, "Your path is: " + decodedPath);
+			String myFileName = new File(decodedPath).getName();
+			//JOptionPane.showMessageDialog(null, "Your file name is: " + myFileName);
+			String newPath = decodedPath.substring(0, decodedPath.length() - myFileName.length());
+			//JOptionPane.showMessageDialog(null, "Your new file name is: " + newPath);
+			String finalPath = newPath + "arguments.txt";
+			JOptionPane.showMessageDialog(null, "Your arguments path is: " + finalPath);
+			
+			try {
+				fr = new FileReader(finalPath);
+			} catch (FileNotFoundException e) {
+				JOptionPane.showMessageDialog(null, "You deleted arguments.txt :(");
+				e.printStackTrace();
+			}
+			textReader = new BufferedReader(fr);
+			try {
+				gitPath = textReader.readLine();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "You must set a path in arguments.txt");
+				gitPath = "";
+				e.printStackTrace();
+			}
+			
+		} catch (UnsupportedEncodingException e) {
+			JOptionPane.showMessageDialog(null, "Yo path is jacked up.");
+			e.printStackTrace();
+		}
+		
+		return gitPath;
 	}
 	/**
 	 * Selection in the workbench has been changed. We 
