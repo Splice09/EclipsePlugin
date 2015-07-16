@@ -72,16 +72,15 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			//create layout object and set shell layout
 			FormLayout layout = new FormLayout();
 			shell.setLayout(layout);
-		        
 			//draw UI
 			drawUI();
-		 
 			//set shell title, and size
 			shell.setText("Git Commit Plugin");
 			shell.setSize(450, 200);
 			centerWindow(shell);
 			//open shell
 			shell.open();
+			
 			
 		}
 	}
@@ -171,7 +170,10 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	public void makeCommit(String commitMessage){
 		//get the current working directory of the user (set in arguments.txt)
 		workingDir = getWorkingDir();
-		if(workingDir != ""){
+		if((workingDir == "") || (workingDir == null)){
+			JOptionPane.showMessageDialog(null, "Unable to make commit. Please set a path in arguments.txt");
+		}
+		else{
 			try {
 				//Create the repository
 				FileRepositoryBuilder builder = new FileRepositoryBuilder();
@@ -187,9 +189,6 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		else{
-			JOptionPane.showMessageDialog(null, "Unable to make commit. Please set a path in arguments.txt");
 		}
 	}
 	
@@ -208,7 +207,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			try {
 				fr = new FileReader(finalPath);
 			} catch (FileNotFoundException e) {
-				JOptionPane.showMessageDialog(null, "You deleted arguments.txt");
+				JOptionPane.showMessageDialog(null, "arguments.txt not found.");
 				e.printStackTrace();
 			}
 			textReader = new BufferedReader(fr);
