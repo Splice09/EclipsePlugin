@@ -206,19 +206,19 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			//Open arguments to retrieve Git Commit path
 			try {
 				fr = new FileReader(finalPath);
+				textReader = new BufferedReader(fr);
+				//Read first line of arguments
+				try {
+					gitPath = textReader.readLine();
+				} catch (IOException e) {
+					gitPath = "";
+					e.printStackTrace();
+				}
 			} catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(null, "arguments.txt not found.");
-				e.printStackTrace();
-			}
-			textReader = new BufferedReader(fr);
-			//Read first line of arguments
-			try {
-				gitPath = textReader.readLine();
-			} catch (IOException e) {
 				gitPath = "";
 				e.printStackTrace();
 			}
-			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
