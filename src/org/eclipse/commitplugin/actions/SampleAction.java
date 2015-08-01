@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 //import java.net.URLDecoder;
 
 import javax.swing.JOptionPane;
@@ -173,6 +172,9 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 		if((workingDir == "") || (workingDir == null)){
 			JOptionPane.showMessageDialog(null, "Unable to make commit. Please set a path in arguments.txt");
 		}
+		else if(workingDir == "1"){
+			System.out.println("message handled.");
+		}
 		else{
 			try {
 				//Create the repository
@@ -198,9 +200,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 */
 	public String getWorkingDir(){
 		String myDir = SampleAction.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		//try {
 			//Build file path to arguments.txt
-			//String decodedPath = URLDecoder.decode(myDir, "UTF-8");
 			String myFileName = new File(myDir).getName();
 			String newPath = myDir.substring(0, myDir.length() - myFileName.length());
 			String finalPath = newPath + "arguments.txt";
@@ -218,13 +218,9 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 				}
 			}catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(null, "arguments.txt not found.");
-				gitPath = "";
+				gitPath = "1";
 				e.printStackTrace();
-			}
-		//} catch (UnsupportedEncodingException e) {
-			//e.printStackTrace();
-		//}
-		
+			}	
 		return gitPath;
 	}
 	/**
