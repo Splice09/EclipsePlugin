@@ -206,6 +206,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 			String finalPath = newPath + "arguments.txt";
 			//Open arguments to retrieve Git Commit path
 			try {
+				JOptionPane.showMessageDialog(null, "final path: " + finalPath);
 				fr = new FileReader(finalPath);
 				textReader = new BufferedReader(fr);
 				//Read first line of arguments
