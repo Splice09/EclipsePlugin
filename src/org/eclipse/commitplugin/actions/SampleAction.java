@@ -186,6 +186,7 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 				git.add().addFilepattern(".").call();
 				//Make Commit with included message
 				git.commit().setMessage(commitMessage).call();
+				git.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
