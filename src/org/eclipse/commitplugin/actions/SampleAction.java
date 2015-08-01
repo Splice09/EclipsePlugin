@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
+//import java.net.URLDecoder;
 
 import javax.swing.JOptionPane;
 
@@ -198,11 +198,11 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 	 */
 	public String getWorkingDir(){
 		String myDir = SampleAction.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		try {
+		//try {
 			//Build file path to arguments.txt
-			String decodedPath = URLDecoder.decode(myDir, "UTF-8");
-			String myFileName = new File(decodedPath).getName();
-			String newPath = decodedPath.substring(0, decodedPath.length() - myFileName.length());
+			//String decodedPath = URLDecoder.decode(myDir, "UTF-8");
+			String myFileName = new File(myDir).getName();
+			String newPath = myDir.substring(0, myDir.length() - myFileName.length());
 			String finalPath = newPath + "arguments.txt";
 			//Open arguments to retrieve Git Commit path
 			try {
@@ -216,14 +216,14 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 					gitPath = "";
 					e.printStackTrace();
 				}
-			} catch (FileNotFoundException e) {
+			}catch (FileNotFoundException e) {
 				JOptionPane.showMessageDialog(null, "arguments.txt not found.");
 				gitPath = "";
 				e.printStackTrace();
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		//} catch (UnsupportedEncodingException e) {
+			//e.printStackTrace();
+		//}
 		
 		return gitPath;
 	}
