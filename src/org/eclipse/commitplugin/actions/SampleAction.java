@@ -178,12 +178,8 @@ public class SampleAction implements IWorkbenchWindowActionDelegate{
 		else{
 			try {
 				//Create the repository
-				FileRepositoryBuilder builder = new FileRepositoryBuilder();
-				Repository localRepo = builder.setGitDir(new File(workingDir + "/.git"))
-						.readEnvironment() // scan environment GIT_* variables
-						.findGitDir() // scan up the file system tree
-						.build();
-				Git git = new Git(localRepo);
+				File gitDir = new File(workingDir);
+				Git git = Git.init().setDirectory(gitDir).call();
 				//Add all relevant files to the Git repository
 				git.add().addFilepattern(".").call();
 				//Make Commit with included message
