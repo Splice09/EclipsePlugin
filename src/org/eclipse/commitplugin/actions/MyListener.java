@@ -25,7 +25,6 @@ public class MyListener implements IStartup {
 	/* This method sets up a listener that runs in the background of eclipse for PyUnit */
 	@Override
 	public void earlyStartup() {
-		JOptionPane.showMessageDialog(null, "You are running the Software Process Git Commit Plugin!");
 		PythonRunner.onPyUnitServerCreated
 		.registerListener(new ICallbackListener<IPyUnitServer>() {
 			

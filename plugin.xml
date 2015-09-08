@@ -4,6 +4,24 @@
 <!-- plugin information -->	
 <plugin>
 	<extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               label="Commit Plugin"
+               mnemonic="M"
+               id="org.eclipse.commitplugin.actions.MyMenu">
+            <command
+                  commandId="EclipsePlugin.command1"
+                  id="sample command"
+                  label="You are running the Software Process Git Commit Plugin!"
+                  mnemonic="S"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+    </extension>
+	<extension
          id="commitPlugin"
          point="org.eclipse.ui.startup">
     	<startup
