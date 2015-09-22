@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="resources/org.eclipse.core.resources.spysupport_1.4.0.200607141315.jar"/>
-	<classpathentry kind="lib" path="resources/org.eclipse.core.tools_1.4.0.200607141315.jar"/>
-	<classpathentry kind="lib" path="resources/org.eclipse.core.tools.resources_1.4.0.200607141315.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.source_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.ui_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.pgm.source_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.pgm_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.http.apache_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.eclipse.jgit.archive_4.0.1.201506240215-r.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.slf4j.api_1.7.2.v20121108-1250.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.slf4j.impl.log4j12_1.7.2.v20131105-2200.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/com.python.pydev_4.2.0.201507041133/pydev.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.python.pydev.debug_4.2.0.201507041133/pydev-debug.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Eclipse/eclipse-standard-luna-R-win32-x86_64/eclipse/plugins/org.python.pydev_4.2.0.201507041133/pydev.jar"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

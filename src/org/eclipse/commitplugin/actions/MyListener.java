@@ -7,7 +7,7 @@ import org.python.pydev.debug.ui.launching.PythonRunner;
 import org.python.pydev.shared_core.callbacks.ICallbackListener;
 import org.eclipse.ui.IStartup;
 
-import javax.swing.JOptionPane;
+
 
 /**
  * Author: Patrick Fleming

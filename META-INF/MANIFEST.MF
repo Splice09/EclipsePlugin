@@ -9,5 +9,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jgit;bundle-version="3.7.1",
  org.python.pydev.core;bundle-version="4.2.0",
  org.python.pydev.debug;bundle-version="4.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6, JavaSE-1.7, JavaSE-1.8
 Bundle-ActivationPolicy: lazy
